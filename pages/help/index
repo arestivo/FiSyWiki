@@ -3,15 +3,32 @@ FisyWiki Help
 
 ### Pages
 
-* To create a new page, just create a new file in the **pages** folder. 
+* To create a new page, just create a new file in the **pages** folder.
+* The initial page of each folder is **index**.
 * Pages are organized according to the folder structure.
 * You can, and should, use **markdown**.
 
+### Layouts
+
+* Layouts define the basic structure of a page.
+* At the moment there are only 2 defined layouts.
+  * default - the default layout.
+  * 404 - the layout for non existing pages.
+* Layouts are defined using markdown, html and widgets.
+
 ### Widgets
 
-| Name       | Variables                 |
-|------------|---------------------------|
-| Header     | theme, title and subtitle |
-| Footer     |                           |
-| Content    |                           |
-| Navigation | home, separator           |
+* Widgets can be used in pages or layouts.
+* To place a widget, simply enclose it's name using double square brackets.
+* You can pass parameters to the widget using a pipe and json.
+* Example: \[\[navigation|{"separator": ":"}\]\]
+
+| Name       | Variables                 | Default       |
+|------------|---------------------------|---------------|
+| Header     | theme                     | default       |
+|            | title                     | FisyWiki      |
+|            | subtitle                  | Page filename | 
+| Footer     |                           |               |
+| Content    |                           |               |
+| Navigation | home                      | Home          |
+|            | home, separator           | >             |
