@@ -1,0 +1,17 @@
+FisyWiki Help
+-------------
+
+### Pages
+
+* To create a new page, just create a new file in the **pages** folder. 
+* Pages are organized according to the folder structure.
+* You can, and should, use **markdown**.
+
+### Widgets
+
+| Name       | Variables                 |
+|------------|---------------------------|
+| Header     | theme, title and subtitle |
+| Footer     |                           |
+| Content    |                           |
+| Navigation | home, separator           |

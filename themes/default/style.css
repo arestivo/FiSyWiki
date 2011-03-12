@@ -1,0 +1,70 @@
+body {
+	font-family: verdana, helvetica, sans-serif;
+	font-size: small;
+	width: 640px;
+}
+
+h1,h2,h3,h4 {
+	font-family: trebuchet, "trebuchet ms", sans-serif;
+}
+
+h2, h3 {
+    margin-top: 30px;
+}
+
+
+body {
+    width: 740px;
+    margin-left: 50px;
+}
+
+ul {
+    width: 75%;
+}
+
+li {
+    margin-top: 5px;
+}
+
+dl {
+    width: 75%;
+    margin-left: 20px;
+}
+
+dt {
+    margin-top: 10px;
+}
+
+dd {
+    margin-left: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+
+th, td, tr {
+    border: 1px solid black;
+    font-size: small;
+}
+
+th {
+    font-weight: bold;
+    padding: 2px;
+}
+
+td {
+    padding: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    vertical-align: top;
+}
+
+a {
+    color: blue;
+}
+
+.notfound a {
+    color: red;
+}
