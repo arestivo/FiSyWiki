@@ -1,7 +1,7 @@
 <?
   class Content extends Widget {
-    public function getCanonicalURL($url){
-         $pos = strrpos($this->path,'/');
+    public function getCanonicalURL($url, $current){
+         $pos = strrpos($current,'/');
          if (!$pos) $path = '';
          else $path = substr($this->path, 0, $pos + 1);
          
@@ -25,7 +25,7 @@
            $pos = strrpos($this->path,'/');
            if (strpos($url,'.')) $prefix = "pages/"; else $prefix = '?p=';
 
-           $path = $this->getCanonicalURL($url);
+           $path = $this->getCanonicalURL($url, $this->path);
 
            if ((file_exists('pages/'.$path) && !is_dir('pages/'.$path)) || file_exists('pages/'.$path.'/index'))
 	       $content = str_replace($complete, "[$title]($prefix$path)", $content);
