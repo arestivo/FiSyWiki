@@ -68,3 +68,9 @@ a {
 .notfound a {
     color: red;
 }
+
+pre {
+  border: 1px solid;
+  padding: 5px;
+  background-color: #DDDDFF;
+}
