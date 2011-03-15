@@ -30,7 +30,10 @@
               $class = "notfound";
 	   else $class = "";
 
-	   $content = str_replace($complete, '<span class="' . $class . '">' . "[$title]($prefix$path)", $content);
+	   if ($class)
+	     $content = str_replace($complete, '<span class="' . $class . '">' . "[$title]($prefix$path)</span>", $content);
+	   else
+	     $content = str_replace($complete, "[$title]($prefix$path)", $content);
 	 }
       }
       
