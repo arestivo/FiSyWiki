@@ -23,14 +23,14 @@
          $url = $matches[2][$id];
          if (substr($url,0,7) != 'http://' && substr($url,0,8) != 'https://') {
            $pos = strrpos($this->path,'/');
+           $path = $this->getCanonicalURL($url, $this->path);
            if (strpos($url,'.')) $prefix = "pages/"; else $prefix = '?p=';
 
-           $path = $this->getCanonicalURL($url, $this->path);
+           if (!((file_exists('pages/'.$path) && !is_dir('pages/'.$path)) || file_exists('pages/'.$path.'/index'))) 
+              $class = "notfound";
+	   else $class = "";
 
-           if ((file_exists('pages/'.$path) && !is_dir('pages/'.$path)) || file_exists('pages/'.$path.'/index'))
-	       $content = str_replace($complete, "[$title]($prefix$path)", $content);
-	   else
-	       $content = str_replace($complete, '<span class="notfound">'."[$title]($prefix$path)</span>", $content);
+	   $content = str_replace($complete, '<span class="' . $class . '">' . "[$title]($prefix$path)", $content);
 	 }
       }
       

@@ -70,6 +70,24 @@ a {
     color: red;
 }
 
+a[href $='.pdf'] { 
+    background-image: url(pdf.png);
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+a[href $='.sql'] { 
+    background-image: url(sql.png);
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+a[href ^='http'] { 
+    background-image: url(external.gif);
+    background-repeat: no-repeat;
+    padding-left: 16px;
+}
+
 .justout {
     color: red;
 }
