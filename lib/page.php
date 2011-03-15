@@ -40,12 +40,12 @@
       // Page not found
       if (!file_exists('pages/'. $path)){
         header("HTTP/1.0 404 Not Found");
-        $layout = Markdown(file_get_contents('layouts/404'));
+        $layout = file_get_contents('layouts/404');
       }
 
       // Get default template and render markdown
       else 
-        $layout = Markdown(file_get_contents('layouts/default'));
+        $layout = file_get_contents('layouts/default');
 
       return $layout;
     }  

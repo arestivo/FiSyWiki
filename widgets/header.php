@@ -6,7 +6,7 @@
       $header = preg_replace('/##title##/', $this->getParam('title', 'FisyWiki'), $header);
       $subtitle = $this->getParam('subtitle', $this->getPageId());
       $header = preg_replace('/##subtitle##/', $this->getParam('titleseparator', '::') . ' ' . $subtitle, $header);
-      return Markdown($header);
+      return $header;
     }
     
     public function getPageId() {
