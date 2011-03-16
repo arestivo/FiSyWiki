@@ -82,6 +82,12 @@ a[href $='.sql'] {
     padding-left: 20px;
 }
 
+a[href $='.zip'] { 
+    background-image: url(zip.png);
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
 a[href ^='http'] { 
     background-image: url(external.gif);
     background-repeat: no-repeat;
