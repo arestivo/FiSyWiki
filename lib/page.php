@@ -49,16 +49,22 @@
 
       return $layout;
     }  
+
+    public function getGlobalParams($path) {
+        $global = array();
+        if (file_exists('pages/'. $path)) {
+         $content = file_get_contents('pages/' . $path);
+          if (preg_match('/~~(.*)\|(.*)~~/', $content, $matches)) {
+  	     $widget = $matches[1];
+	     $params = json_decode($matches[2], true);
+	     $global[$widget] = $params;
+	  }
+        }
+	return $global;
+    }
     
     private function replaceWidgets($path, $layout) {
-      if (file_exists('pages/'. $path)) {
-        $content = file_get_contents('pages/' . $this->path);
-        if (preg_match('/~~(.*)\|(.*)~~/', $content, $matches)) {
-  	   $widget = $matches[1];
-	   $params = json_decode($matches[2], true);
-	   $global[$widget] = $params;
-	}
-      }
+      $global = $this->getGlobalParams($path);
 
       while (true) {
 	    if (preg_match('/\[\[(.*)\]\]/', $layout, $matches) == 0) break; // No more widgets
@@ -71,10 +77,10 @@
 	      $widget = $matches[1];
 	      $params = json_decode($matches[2], true);
 	    }
-	    
+
 	    if (isset($global[$widget])) 
 	      $params = array_merge($global[$widget], $params);
-		
+
 	    // Use widget factory to create widget
     	    $widget = Widget::create($widget, $params, $path);
 

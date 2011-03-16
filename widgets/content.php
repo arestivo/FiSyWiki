@@ -38,15 +38,20 @@
       }
       
       $content = Markdown($content);
+      $global = Page::getGlobalParams($this->path);
+      
       while (true) {
         if (preg_match('/\[\[(.*)\]\]/', $content, $matches) == 0) break;
         $widget = $matches[1];
-        $params = array();
     
         if (preg_match('/(.*)\|(.*)/', $widget, $matches) == 1) {
           $widget = $matches[1];
           $params = json_decode($matches[2], true);
-        }
+        } 
+        if (!is_array($params)) $params = array();
+
+        if (isset($global[$widget])) 
+	  $params = array_merge($global[$widget], $params);
 
         $widget = Widget::create($widget, $params, $this->path);
 
