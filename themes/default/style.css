@@ -1,7 +1,7 @@
 body {
 	font-family: verdana, helvetica, sans-serif;
 	font-size: small;
-	width: 640px;
+	max-width: 640px;
 }
 
 h1,h2,h3,h4 {
