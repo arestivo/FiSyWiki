@@ -67,7 +67,7 @@
       $global = $this->getGlobalParams($path);
 
       while (true) {
-	    if (preg_match('/\[\[(.*)\]\]/', $layout, $matches) == 0) break; // No more widgets
+	    if (preg_match('/\[\[(.*?)\]\]/', $layout, $matches) == 0) break; // No more widgets
 
 	    $widget = $matches[1];
 	    $params = array();

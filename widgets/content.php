@@ -41,7 +41,7 @@
       $global = Page::getGlobalParams($this->path);
       
       while (true) {
-        if (preg_match('/\[\[(.*)\]\]/', $content, $matches) == 0) break;
+        if (preg_match('/\[\[(.*?)\]\]/', $content, $matches) == 0) break;
         $widget = $matches[1];
     
         if (preg_match('/(.*)\|(.*)/', $widget, $matches) == 1) {
@@ -55,7 +55,7 @@
 
         $widget = Widget::create($widget, $params, $this->path);
 
-        $content = preg_replace('/\[\[.*\]\]/', $widget->render(), $content, 1);    
+        $content = preg_replace('/\[\[.*?\]\]/', $widget->render(), $content, 1);    
       }
       return $content;
     }
