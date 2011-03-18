@@ -11,6 +11,7 @@
     }
      
     public function create($name, $params, $path) {
+      $name = strtolower($name);
       if (!file_exists('widgets/'.$name.'.php')) die ('No such widget: ' . $name);;
       include_once('widgets/'.$name.'.php');
       $widget = new $name($name, $params, $path);
