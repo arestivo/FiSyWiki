@@ -1,9 +1,17 @@
 [[header|{"title": "André Restivo"}]]
 
-<h1>André Restivo</h1>
+<div id="header">
+  <h1>André Restivo</h1>
+</div>
 
-<p>You are here: [[navigation]]</p>
+<div id="navigation">
+[[navigation]]
+</div>
 
+<div id="content">
 [[content]]
+</div>
 
+<div id="content">
 [[footer]]
+</div>
