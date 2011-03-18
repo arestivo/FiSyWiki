@@ -20,8 +20,8 @@ FisyWiki Help
 
 * Widgets can be used in pages or layouts.
 * To place a widget, simply enclose it's name using double square brackets.
-* You can pass parameters to the widget using a pipe and json.
-* Example: \[\[navigation|{"separator": ":"}\]\]
+* You can pass parameters to the widget using |, # and =.
+* Example: \[\[navigation|##separator=:##\]\]
 
 | Name       | Variables                 | Default       |
 |------------|---------------------------|---------------|
