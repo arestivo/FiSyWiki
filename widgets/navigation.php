@@ -24,7 +24,8 @@
 		  else $cpath = '';
 		  $cpath .= $page;
 	
-		  if (!is_dir('pages/' . $cpath) || file_exists('pages/' . $cpath . '/index'))
+		  if ((file_exists('pages/' . $cpath . '/index') && !is_dir('pages/' . $cpath)) || 
+		       file_exists('pages/' . $cpath . '/index'))
 		    $navigation .= '<a href="?p='.$cpath.'">'.ucfirst($page).'</a> ';
 		  else
 		    $navigation .= ucfirst($page);
