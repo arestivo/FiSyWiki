@@ -67,25 +67,25 @@
       $global = $this->getGlobalParams($path);
 
       while (true) {
-	    if (preg_match('/\[\[(.*?)\]\]/', $layout, $matches) == 0) break; // No more widgets
+	    if (preg_match('/\[\[(.*?)\]\]/s', $layout, $matches) == 0) break; // No more widgets
 
 	    $widget = $matches[1];
-	    $params = array();
-
+	    $params = "";
+	
 	    // Get widget parameters    
-    	    if (preg_match('/(.*)\|(.*)/', $widget, $matches) == 1) {
+    	    if (preg_match('/(.*)\|(.*)/s', $widget, $matches) == 1) {
 	      $widget = $matches[1];
-	      $params = json_decode($matches[2], true);
+	      $params = $matches[2];
 	    }
 
-	    if (isset($global[$widget])) 
-	      $params = array_merge($global[$widget], $params);
-
 	    // Use widget factory to create widget
-    	    $widget = Widget::create($widget, $params, $path);
+    	    $widget = Widget::create($widget, $path);
+	    $widget->addParams($params);
+	    if (isset($global[$widget->getName()])) 
+	      $widget->addParams($global[$widget->getName()]);
 
 	    // Render widget
-	    $layout = preg_replace('/\[\[.*\]\]/', $widget->render(), $layout, 1);    	    
+	    $layout = preg_replace('/\[\[.*?\]\]/s', $widget->render(), $layout, 1);    	    
       }
       $layout = preg_replace('/~~.*~~/', '', $layout);
       

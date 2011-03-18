@@ -4,22 +4,35 @@
     protected $params;
     protected $path;
   
-    protected function __construct($name, $params, $path) {
+    protected function __construct($name, $path) {
       $this->name = $name;
-      $this->params = $params;
       $this->path = $path;
+      $this->params = array();
     }
      
-    public function create($name, $params, $path) {
+    public function getName() {
+      return $this->name;
+    }
+    
+    public function create($name, $path) {
       $name = strtolower($name);
       if (!file_exists('widgets/'.$name.'.php')) die ('No such widget: ' . $name);;
       include_once('widgets/'.$name.'.php');
-      $widget = new $name($name, $params, $path);
+      $widget = new $name($name, $path);
       return $widget;
     }  
   
     public function render() {
     	die ('Render function not implemented for widget ' . $this->name);
+    }
+
+    public function addParams($params) {
+        if ($params == null) return;
+        $params = explode("##", $params);
+        foreach ($params as $p) {
+          if (preg_match('/(.*?)=(.*)/s', $p, $matches) == 1)
+            $this->params[$matches[1]] = $matches[2];
+        }
     }
     
     protected function getParam($p, $default) {

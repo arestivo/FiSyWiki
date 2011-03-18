@@ -37,26 +37,25 @@
 	 }
       }
       
-      $content = Markdown($content);
       $global = Page::getGlobalParams($this->path);
       
       while (true) {
-        if (preg_match('/\[\[(.*?)\]\]/', $content, $matches) == 0) break;
+        if (preg_match('/\[\[(.*?)\]\]/s', $content, $matches) == 0) break;
         $widget = $matches[1];
-    
-        if (preg_match('/(.*)\|(.*)/', $widget, $matches) == 1) {
+
+        if (preg_match('/(.*)\|(.*)/s', $widget, $matches) == 1) {
           $widget = $matches[1];
-          $params = json_decode($matches[2], true);
+          $params = $matches[2];
         } 
-        if (!is_array($params)) $params = array();
 
-        if (isset($global[$widget])) 
-	  $params = array_merge($global[$widget], $params);
+        $widget = Widget::create($widget, $this->path);
+        $widget->addParams($params);
+        if (isset($global[$widget->getName()]))
+          $widget->addParams($global[$widget->getName()]);
 
-        $widget = Widget::create($widget, $params, $this->path);
-
-        $content = preg_replace('/\[\[.*?\]\]/', $widget->render(), $content, 1);    
+        $content = preg_replace('/\[\[.*?\]\]/s', $widget->render(), $content, 1);    
       }
+      $content = Markdown($content);
       return $content;
     }
   }
