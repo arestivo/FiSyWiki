@@ -23,7 +23,7 @@
 	      exec('cd tmp; rm *.latex; rm *.dvi; rm *.aux; rm *.log');
       }
             
-      return '<img src="tmp/'.$hash.'.png" />';
+      return '<img class="latex" src="tmp/'.$hash.'.png" />';
     }
   }
 ?>
