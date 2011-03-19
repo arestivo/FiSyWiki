@@ -14,6 +14,7 @@
       $geshi->enable_classes(false);
       return $geshi->parse_code();
     }
+  
     protected function getDefaultParam() {
       return 'source';
     }
