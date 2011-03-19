@@ -7,7 +7,8 @@
       if ($value == null) return;
 
       $hash = md5($value);
-
+      
+      umask(0);
       if (!file_exists('tmp/latex/')) 
         if (!@mkdir('tmp/latex/', 0755, true)) 
           return 'Latex widget needs folder /tmp/latex with writing permissions<br />';
