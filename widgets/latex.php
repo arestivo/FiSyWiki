@@ -1,13 +1,12 @@
 <?
   class Latex extends Widget {
     public function render() {
-    
-      $value = $this->getParam('value', null);
+      $exp = $this->getParam('exp', null);
 
-      if ($value == null) return;
+      if ($exp == null) return;
 
-      $hash = md5($value);
-      
+      $hash = md5($exp);
+
       umask(0);
       if (!file_exists('tmp/latex/')) 
         if (!@mkdir('tmp/latex/', 0755, true)) 
@@ -15,7 +14,7 @@
       
       if (!file_exists('tmp/latex/'.$hash.'.png')) {
       
-	      $latex = '\documentclass[fleqn]{article} \usepackage{amssymb,amsmath,bm,color} \usepackage[latin1]{inputenc} \begin{document} \thispagestyle{empty} \mathindent0cm \parindent0cm \begin{displaymath}'.$value.'\end{displaymath}\end{document}';
+	      $latex = '\documentclass[fleqn]{article} \usepackage{amssymb,amsmath,bm,color} \usepackage[latin1]{inputenc} \begin{document} \thispagestyle{empty} \mathindent0cm \parindent0cm \begin{displaymath}'.$exp.'\end{displaymath}\end{document}';
 
 	      $file = 'tmp/latex/'.$hash.'.';
 
@@ -31,6 +30,10 @@
       }
             
       return '<img class="latex" src="tmp/latex/'.$hash.'.png" />';
+    }
+
+    protected function getDefaultParam() {
+    	return 'exp';
     }
   }
 ?>

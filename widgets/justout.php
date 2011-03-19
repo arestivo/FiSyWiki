@@ -33,5 +33,9 @@
         if ($now - $lm < $span) return '<span class="justout">'.$keyword.'</span>';
       }
     }
+
+    protected function getDefaultParam() {
+    	return 'url';
+    }
   }
 ?>

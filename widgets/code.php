@@ -15,4 +15,8 @@
       return $geshi->parse_code();
     }
   }
+
+  protected function getDefaultParam() {
+    return 'source';
+  }
 ?>

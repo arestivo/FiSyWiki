@@ -16,5 +16,9 @@
     	$pos = strrpos($id, '/'); if ($pos) $pos++;
     	return ucfirst(substr($id, $pos));
     }
+    
+    protected function getDefaultParam() {
+    	return 'title';
+    }
   }
 ?>

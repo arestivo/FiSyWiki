@@ -22,5 +22,9 @@
           break;
       }
     }
+
+    protected function getDefaultParam() {
+      return null;
+    }
   }
 ?>

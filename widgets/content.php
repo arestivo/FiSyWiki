@@ -58,5 +58,10 @@
       $content = Markdown($content);
       return $content;
     }
+    
+    protected function getDefaultParam() {
+      return null;
+    }
   }
+
 ?>
