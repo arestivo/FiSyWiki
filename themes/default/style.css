@@ -111,3 +111,8 @@ pre a[href ^='http'] {
   background: none;  
   padding-left: 0px;
 }
+
+img.stats {
+  position: absolute;
+  left: 686px;
+}

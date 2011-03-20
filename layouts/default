@@ -2,10 +2,11 @@
 
 <div id="header">
   <h1>André Restivo</h1>
+  [[stats]]
 </div>
 
 <div id="navigation">
-[[navigation]]
+[[navigation]]   
 </div>
 
 <div id="content">
