@@ -28,7 +28,7 @@
 	         	  
  	  $sparkline = new Sparkline_Bar();
 	  for ($w = 1; $w <= 52; $w++)
-         	  $sparkline->setData($w, $data[$w]);
+         	  $sparkline->setData($w, $data[$w], $w == $week?'blue':'black');
           $sparkline->Render(20);
           $sparkline->Output('tmp/stats/file.png');
           return '<img class="stats" src="tmp/stats/file.png" />';
