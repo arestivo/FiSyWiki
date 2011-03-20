@@ -11,29 +11,21 @@
           $hash = md5($this->path);
           $week = date('W');
 
-	  if ($db = new SQLite3('tmp/stats/' . $hash . '.sql')) {
-//	        chmod('tmp/stats/' . $hash . '.sql', 0777);
-	        $q = @$db->query('SELECT views FROM stats WHERE week = ' . $week);
-	        if ($q === false) {
-	            $db->exec('CREATE TABLE stats (week integer, views integer); INSERT INTO stats VALUES ('.$week.',1)');
-        	    $hits = 1;
-        	} else {
-        	    $result = $q->fetchArray();
-        	    $hits = $result[0] + 1;
-        	}
-	        $db->exec('UPDATE stats SET views = ' . $hits . ' WHERE week = ' . $week);
-    	  } else {
-        	return $err;
-    	  }
+	  if (!file_exists('tmp/stats/'.$hash.'.json')) {
+	  	for ($w = 1; $w <= 52; $w++)
+	    		$data[$w] = 0;
+	  } else {
+	  	$data = json_decode(file_get_contents('tmp/stats/'.$hash.'.json'), true);
+	  }
 
-	  for ($w = 1; $w <= 52; $w++)
-	    $data[$w] = 0;
+	  $data[$week]++;
+	  $fh = @fopen('tmp/stats/'.$hash.'.json', 'w');
 
-          $q = @$db->query('SELECT week, views FROM stats');
-       	  while ($result = $q->fetchArray()) {
-		$data[$result[0]] = $result[1];
-       	  }
-       	  
+          if (!$fh) return 'Stats widget needs folder /tmp/stats with writing permissions<br />';
+	      
+	  fwrite($fh, json_encode($data));
+	  fclose($fh);
+	         	  
  	  $sparkline = new Sparkline_Bar();
 	  for ($w = 1; $w <= 52; $w++)
          	  $sparkline->setData($w, $data[$w]);
