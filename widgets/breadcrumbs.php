@@ -1,6 +1,6 @@
 <?
 
-  class Navigation extends Widget {
+  class Breadcrumbs extends Widget {
     public function render() {
       $separator = $this->getParam('separator', '>');
       
