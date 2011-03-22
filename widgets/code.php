@@ -6,11 +6,12 @@
     
       $lang = $this->getParam('lang', 'php');
       $source = $this->getParam('source', null);
+      $lines = $this->getParam('lines', 'yes');
 
       if ($source == null) return;
 
       $geshi = new GeSHi(trim($source), $lang);      
-      $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+      if ($lines == 'yes') $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
       $geshi->enable_classes(false);
       return $geshi->parse_code();
     }
