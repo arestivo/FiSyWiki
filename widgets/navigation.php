@@ -22,19 +22,14 @@
       sort($files);
       foreach ($files as $f => $file) {
         if ($f != 0 && $file == $page)
-          $navigation .= '<a href="?p='.$path.'/'.$files[$f-1].'">&lt; '.$this->getFileName($files[$f-1]).'</a>';
+          $navigation .= '<a href="?p='.$path.'/'.$files[$f-1].'">&lt; '.Page::getFileName($files[$f-1]).'</a>';
         if ($f != 0 && $files[$f-1] == $page) {
           if ($navigation != '') $navigation .= ' | ';
-          $navigation .= '<a href="?p='.$path.'/'.$file.'">'.$this->getFileName($file).' &gt;</a>';
+          $navigation .= '<a href="?p='.$path.'/'.$file.'">'.Page::getFileName($file).' &gt;</a>';
         }
       }
 
       return $navigation;
-    }
-
-    private function getFileName($file ) {
-        if (strpos($file,'-')) return ucfirst(substr($file, strpos($file,'-') + 1));
-        else return ucfirst($file);
     }
         
     protected function getDefaultParam() {

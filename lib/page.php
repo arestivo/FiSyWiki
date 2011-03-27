@@ -91,5 +91,19 @@
       
       return $layout;
     }
+
+    public function getFileName($file) {
+        $file = str_replace('-', ' ', $file);
+        $file = str_replace('_', ' ', $file);
+        $words = explode(' ', $file);
+	$name = '';
+        foreach($words as $w) {
+        	if (preg_match('/[a-z]/i', $w))
+ 		       	$name .= ' ' . ucfirst($w);
+        }
+	$name = trim($name);        
+	return $name;
+    }
+
   }
 ?>

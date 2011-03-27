@@ -26,17 +26,12 @@
   
         if ((file_exists('pages/' . $cpath . '/index') && !is_dir('pages/' . $cpath)) || 
              file_exists('pages/' . $cpath . '/index'))
-          $navigation .= '<a href="?p='.$cpath.'">'.$this->getFileName($page).'</a> ';
+          $navigation .= '<a href="?p='.$cpath.'">'.Page::getFileName($page).'</a> ';
         else
-          $navigation .= $this->getFileName($page);
+          $navigation .= Page::getFileName($page);
         if (!$pos) break;
       }
       return $navigation;
-    }
-
-    private function getFileName($file ) {
-        if (strpos($file,'-')) return ucfirst(substr($file, strpos($file,'-') + 1));
-        else return ucfirst($file);
     }
         
     protected function getDefaultParam() {

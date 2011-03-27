@@ -14,7 +14,7 @@
         if ($id == 'index') return 'Home';
         $id = str_replace('/index', '', $id);
     	$pos = strrpos($id, '/'); if ($pos) $pos++;
-    	return ucfirst(substr($id, $pos));
+    	return Page::getFileName(substr($id, $pos));
     }
     
     protected function getDefaultParam() {
