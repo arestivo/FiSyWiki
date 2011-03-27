@@ -15,7 +15,7 @@
 
       $files = array();      
       while (($file = readdir($handle))) {
-        if (!is_dir('pages/' . $path . '/' . $file) && substr($file, 0, strlen($start)) == $start && $file != $index)
+        if (!is_dir('pages/' . $path . '/' . $file) && substr($file, 0, strlen($start)) == $start && $file != $index && (!strpos($file,'.')))
 	  $files[] .= $file;
       }
 
