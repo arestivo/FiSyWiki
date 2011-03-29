@@ -102,6 +102,7 @@
  		       	$name .= ' ' . ucfirst($w);
         }
 	$name = trim($name);        
+	if ($name == '') $name = $file;
 	return $name;
     }
 
