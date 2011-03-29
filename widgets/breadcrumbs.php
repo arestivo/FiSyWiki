@@ -24,7 +24,7 @@
         else $cpath = '';
         $cpath .= $page;
   
-        if ((file_exists('pages/' . $cpath . '/index') && !is_dir('pages/' . $cpath)) || 
+        if ((!file_exists('pages/' . $cpath . '/index') && !is_dir('pages/' . $cpath)) || 
              file_exists('pages/' . $cpath . '/index'))
           $navigation .= '<a href="?p='.$cpath.'">'.Page::getFileName($page).'</a> ';
         else
