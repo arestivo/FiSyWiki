@@ -4,5 +4,6 @@
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <link rel="stylesheet" href="themes/##theme##/style.css" type="text/css" media="screen" />
   <title>##title## ##subtitle##</title>
+  ##analytics##
 </head>
 <body>
