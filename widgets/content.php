@@ -26,7 +26,9 @@
            $path = $this->getCanonicalURL($url, $this->path);
            if (strpos($url,'.')) $prefix = "pages/"; else $prefix = '?p=';
 
-           if (!((file_exists('pages/'.$path) && !is_dir('pages/'.$path)) || file_exists('pages/'.$path.'/index'))) 
+	   if (strpos($path, '"')) $path_without_title = substr($path, 0, strpos($path, '\"'));
+	   else $path_without_title = $path;
+           if (!((file_exists('pages/'.$path_without_title) && !is_dir('pages/'.$path_without_title)) || file_exists('pages/'.$path_without_title.'/index'))) 
               $class = "notfound";
 	   else $class = "";
 
