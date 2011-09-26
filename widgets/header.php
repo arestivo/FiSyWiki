@@ -11,10 +11,8 @@
       if ($analytics != null) {
          $snippet = file_get_contents('snippets/analytics');
          $snippet = preg_replace('/##analytics##/', $analytics, $snippet);
-	 $header = preg_replace('/##analytics##/', $snippet, $header);
-      } else 
-	 $header = preg_replace('/##analytics##/', '', $header);
-         
+         $header = preg_replace('/##analytics##/', $snippet, $header);
+      } else $header = preg_replace('/##analytics##/', '', $header);
       return $header;
     }
     
