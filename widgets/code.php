@@ -10,6 +10,8 @@
 
       if ($source == null) return;
 
+      $source = str_replace('&#124;', '|', $source);
+
       $geshi = new GeSHi(trim($source), $lang);      
       if ($lines == 'yes') $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
       $geshi->enable_classes(false);
